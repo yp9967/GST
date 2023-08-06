@@ -1,4 +1,5 @@
 import Sidebar from "./Components/Sidebar";
+import { useState } from "react";
 import Home from "./Components/Home";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -12,11 +13,12 @@ import Clients from "./Components/Clients";
 import Support from "./Components/Support";
 
 const App = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <Router>
-      <Sidebar />
+      <Sidebar open={sidebarOpen} setOpen={setSidebarOpen}/>
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home sidebarOpen={sidebarOpen}/>} />
         <Route path="/services" element={<Services />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/download" element={<Download />} />

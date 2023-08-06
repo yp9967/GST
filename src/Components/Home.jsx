@@ -1,47 +1,40 @@
-import React from "react";
-
-const Home = () => {
+function Home({ sidebarOpen }) {
   return (
-    <>
-      <div className="dropdown flex justify-center pt-12 resize-x ">
-          <button
-            className="btn btn-secondary dropdown-toggle text-gray-600"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Company Name
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/serice">
-              Tata
-            </a>
-            <a class="dropdown-item" href="#">
-              Gucci
-            </a>
-            <a class="dropdown-item" href="#">
-              Zara
-            </a>
-          </div>
+    <div className={`min-h-screen flex justify-center items-center px-4 duration-300 ${sidebarOpen ? 'transform translate-x-72' : ''}`}>
+      <div className="bg-white w-full max-w-xl p-6 rounded-md shadow-md">
+
+        {/* Page Details */}
+        <h1 className="text-2xl font-bold mb-4 text-center">Page Details</h1>
+        
+        {/* Dropdowns */}
+        <div className="flex justify-between mb-4">
+          <select className="border w-1/2 p-2 rounded-md mr-2">
+            <option>Dropdown 1</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+          </select>
+          <select className="border w-1/2 p-2 rounded-md ml-2">
+            <option>Dropdown 2</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+          </select>
+        </div>
+        
+        {/* Table Data */}
+        <div className="border rounded-md p-4">
+          <table className="w-full">
+            {/* Add your table rows and data here */}
+            <tr>
+              <td>Sample Data</td>
+              <td>Sample Data</td>
+            </tr>
+            {/* Repeat for other rows */}
+          </table>
         </div>
 
-      {/* <label for="underline_select" class="sr-only">
-        Underline select
-      </label>
-      <select
-        id="underline_select"
-        class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-      >
-        <option selected>Choose a country</option>
-        <option value="US">United States</option>
-        <option value="CA">Canada</option>
-        <option value="FR">France</option>
-        <option value="DE">Germany</option>
-      </select> */}
-    </>
+      </div>
+    </div>
   );
-};
+}
 
 export default Home;

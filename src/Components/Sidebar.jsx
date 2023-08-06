@@ -12,9 +12,10 @@ import {
 import { Link } from "react-router-dom";
 import { BiSupport } from "react-icons/bi";
 
-const Sidebar = () => {
-  const [open, setOpen] = useState(false);
+const Sidebar = ({open, setOpen}) => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
+  // const [submenuOpen, setSubmenuOpen] = useState(false);
   const Menus = [
     { title: "Home", icon: <AiOutlineHome />, link: "/home" },
     { title: "Services", icon: <AiOutlineCloudServer />, link: "/services" },
