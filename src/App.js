@@ -5,7 +5,7 @@ import Upload from "./Components/Upload";
 import Download from "./Components/Download";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import "./index.css";
 
 const App = () => {
