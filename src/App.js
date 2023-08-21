@@ -1,78 +1,64 @@
+import React, { useState } from "react";
 import Sidebar from "./Components/Sidebar";
-import { useState } from "react";
 import Home from "./Components/Home";
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import Services from "./Components/Services";
 import Upload from "./Components/Upload";
 import Download from "./Components/Download";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import Clients from "./Components/Clients";
-import Support from "./Components/Support";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import "./index.css";
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+
+    setIsLoggedIn(true);
+  };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
+
+
   return (
     <Router>
-      <Sidebar open={sidebarOpen} setOpen={setSidebarOpen}/>
+      {isLoggedIn && (
+        <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} path="/home" />
+      )}
       <Routes>
-        <Route path="/home" element={<Home sidebarOpen={sidebarOpen}/>} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/download" element={<Download />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/clients" element={<Clients />} />
-        <Route path="/support" element={<Support />} />
+        <Route
+          path="/login"
+          element={<Login onLogin={handleLogin} />}
+        />
+        <Route
+          path="/home"
+          element={
+            isLoggedIn ? (
+              <Home
+                sidebarOpen={sidebarOpen}
+                isLoggedIn={isLoggedIn}
+                handleLogout={handleLogout}
+              />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/upload"
+          element={<Upload sidebarOpen={sidebarOpen} />}
+        />
+        <Route
+          path="/download"
+          element={<Download sidebarOpen={sidebarOpen} />}
+        />
       </Routes>
     </Router>
   );
 };
 
 export default App;
-
-
-
-// import Authorization from "./Components/Authorization";
-
-
-
-// const App = () => {
-
-//  <Router>
-{
-  /* <Switch>
-<Route exact path="/" component={Home} />
-<Route path="/about" component={About} />
-<Route path="/contact" component={Contact} />
-</Switch> */
-}
-
-// export default App;
-
-
-  // const currentPath = window.location.pathname;
-
-  // const renderComponentBasedOnPath = () => {
-  //   if (currentPath === '/') {
-  //     return <Home />;
-  //   } else if (currentPath === '/services') {
-  //     return <Services />;
-  //   } else if (currentPath === '/upload') {
-  //     return <Upload />;
-  //   } else if (currentPath === '/download') {
-  //     return <Download />;
-  //   } else if (currentPath === '/authorization') {
-  //     return <Authorization />;
-  //   } else if (currentPath === '/authorization/login') {
-  //     return <Login />;
-  //   } else if (currentPath === '/authorization/signup') {
-  //     return <Signup />;
-  //   } else if (currentPath === '/clients') {
-  //     return <Clients />;
-  //   } else if (currentPath === '/support') {
-  //     return <Support />;
-  //   }
-  // };

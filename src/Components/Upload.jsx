@@ -1,24 +1,150 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
-const Upload = () => {
+const useWindowWidth = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return windowWidth;
+};
+
+const Sidebar = () => {};
+const Upload = ({ sidebarOpen }) => {
+  const windowWidth = useWindowWidth();
+  const isMobile = windowWidth <= 768;
+
   return (
     <>
-      <div className="block p-9 px-12 flex justify-center">
-      
-<div class="flex items-center justify-center w-full">
-    <label for="dropzone-file" class="flex flex-col items-center justify-center w-500 h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-            </svg>
-            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-        </div>
-        <input id="dropzone-file" type="file" class="hidden" />
-    </label>
-</div> 
+      <div className="h-screen ">
+        <Sidebar />
+        <div
+          className={`flex p-12 duration-500 ${
+            !isMobile && sidebarOpen ? "ml-72" : "ml-12"
+          }`}
+        ></div>
+        <div
+          className={`p-10 duration-500 ${
+            !isMobile && sidebarOpen ? "ml-72" : "ml-12"
+          }`}
+        >
+          <div>
+            <div className="border rounded-md p-4 ">
+              <h2 className="text-3xl">Upload Documents . . . </h2>
 
-      
+              <div className="relative overflow-x-auto mt-4">
+                <table className="w-full text-sm text-left  dark:text-gray-900">
+                  <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-white">
+                    <tr>
+                      <th scope="col" className="px-6 py-3 rounded-l-lg">
+                        Company name
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Images Uploaded
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Upload
+                      </th>
+                      <th scope="col" className="px-6 py-3 rounded-r-lg "></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="bg-white dark:bg-gray-800">
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                      >
+                        Tata
+                      </th>
+                      <td className="px-6 py-4">1</td>
+                      <td className="px-6 py-4">
+                        <input
+                          className="block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                          id="file_input"
+                          type="file"
+                        />
+                      </td>
+                      <td className="">
+                        <button
+                          type="button"
+                          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                          Upload +
+                        </button>
+                      </td>
+                    </tr>
+                    <tr className="bg-white dark:bg-gray-800">
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        Bmw
+                      </th>
+                      <td className="px-6 py-4">1</td>
+                      <td className="px-6 py-4">
+                        <input
+                          className="block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                          id="file_input"
+                          type="file"
+                        />
+                      </td>
+                      <td className="">
+                        <button
+                          type="button"
+                          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                          Upload +
+                        </button>
+                      </td>
+                    </tr>
+                    <tr className="bg-white dark:bg-gray-800">
+                      <th
+                        scope="row"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                      >
+                        Honda
+                      </th>
+                      <td className="px-6 py-4">2</td>
+                      <td className="px-6 py-4">
+                        <input
+                          className="block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                          id="file_input"
+                          type="file"
+                        />
+                      </td>
+                      <td className="">
+                        <button
+                          type="button"
+                          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                          Upload +
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr className="font-semibold  dark:text-white">
+                      <th scope="row" className="px-6 py-3 text-base">
+                        <button
+                          type="button"
+                          className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                        >
+                          Add +
+                        </button>
+                      </th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -2,4 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background: linear-gradient(to bottom right, #1a202c, #4a5568);
+  color: white;
+}
+/* Add these classes to your CSS stylesheet */
+.page-enter {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
 
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
