@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/GST.github.io/static/css/main.ccf0999a.css",
-    "main.js": "/GST.github.io/static/js/main.149fc9d8.js",
-    "static/media/sample.png": "/GST.github.io/static/media/sample.1e75ec0f456733f856fd.png",
-    "index.html": "/GST.github.io/index.html",
-    "main.ccf0999a.css.map": "/GST.github.io/static/css/main.ccf0999a.css.map",
-    "main.149fc9d8.js.map": "/GST.github.io/static/js/main.149fc9d8.js.map"
+    "main.css": "/gst/static/css/main.ccf0999a.css",
+    "main.js": "/gst/static/js/main.6a780ae4.js",
+    "static/media/sample.png": "/gst/static/media/sample.1e75ec0f456733f856fd.png",
+    "index.html": "/gst/index.html",
+    "main.ccf0999a.css.map": "/gst/static/css/main.ccf0999a.css.map",
+    "main.6a780ae4.js.map": "/gst/static/js/main.6a780ae4.js.map"
   },
   "entrypoints": [
     "static/css/main.ccf0999a.css",
-    "static/js/main.149fc9d8.js"
+    "static/js/main.6a780ae4.js"
   ]
 }
